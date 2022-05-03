@@ -1,0 +1,214 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+v2.0 | 20110126
+License: none (public domain)
+*/
+
+* {
+  box-sizing: border-box;
+  -webkit-transition: .25s ease-in-out;
+  -moz-transition: .25s ease-in-out;
+  -ms-transition: .25s ease-in-out;
+  -o-transition: .25s ease-in-out;
+  transition: .25s ease-in-out;
+}
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strong, sub, sup, var,
+b, u, i, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header,
+nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, nav, section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote::before, blockquote::after,
+q::before, q::after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+body {
+  font-family: "ヒラギノ角ゴ ProN","Hiragino Kaku Gothic Pro",Meiryo,"ＭＳ Ｐゴシック","MS PGothic",sans-serif;
+  font-size: 14px;
+  line-height: 1;
+  letter-spacing: 0;
+  background: #fff;
+  color: #333;
+}
+
+p,div,td,th,h1,h2,h3,ul {
+  font-weight: normal;
+  line-height: 1.5em;
+}
+
+a {
+  text-decoration: none;
+  text-decoration-line: none;
+}
+.underline {
+  text-decoration-line: underline;
+  text-decoration-color: #333;
+}
+.bold {font-weight: bold;}
+.text-center {text-align: center;}
+.text-left {text-align: left;}
+.text-right {text-align: right;}
+.flex {display: flex;}
+.align-center {
+  align-items: center;
+}
+.justify-around {
+  justify-content: space-around;
+}
+.justify-between {
+  justify-content: space-between;
+}
+.inner {
+  width: 840px;
+  margin: 0 auto;
+}
+@media screen and (min-width: 769px) {
+  .wrapper {
+    width: 960px;
+    margin: 0 auto;
+  }
+  .sp {
+    display: none;
+  }
+}
+.section-ttl {
+  font-size: 32px;
+  font-weight: bold;
+  text-align: center;
+  padding-top: 50px;
+  margin-bottom: 30px;
+}
+.btn {
+  display: inline-block;
+  margin-bottom: 0;
+  font-weight: normal;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  border-radius: 4px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.btn-info {
+  color: #fff;
+  background-color: #5bc0de;
+  border-color: #46b8da;
+}
+.btn-primary {
+  color: #fff;
+  background-color: #337ab7;
+  border-color: #2e6da4;
+}
+.btn-success {
+  color: #fff;
+  background-color: #5cb85c;
+  border-color: #4cae4c;
+}
+.btn-danger {
+  color: #fff;
+  background-color: #d9534f;
+  border-color: #d43f3a;
+}
+.btn-disabled {
+  color: #fff;
+  background-color: #ccc;
+  border-color: #bbb;
+}
+.text-red {
+  color: red;
+}
+
+.pl5 {padding-left: 50px;}
+.pt15 {padding-top: 150px;}
+.pb5 {padding-bottom: 50px;}
+.ml2 {margin-left: 20px;}
+.mr2 {margin-right: 20px;}
+.mt2 {margin-top: 20px;}
+.mb2 {margin-bottom: 20px;}
+.mb3 {margin-bottom: 30px;}
+.fz40 {font-size: 40px;}
+.fz36 {font-size: 36px;}
+.fz32 {font-size: 32px;}
+.fz28 {font-size: 28px;}
+.fz24 {font-size: 24px;}
+.fz20 {font-size: 20px;}
+.fz18 {font-size: 18px;}
+.fz16 {font-size: 16px;}
+.fz14 {font-size: 14px;}
+.fz12 {font-size: 12px;}
+
+
+@media screen and (max-width: 768px) {
+  body {
+    width: 100vw;
+    font-size: 3.3vw;
+  }
+  .pc {display: none!important;}
+  .sp-column {flex-direction: column;}
+  .inner {
+    width: 90vw;
+    margin: 0 auto;
+  }
+  .section-ttl {
+    font-size: 6.5vw;
+    padding-top: 5vw;
+    margin-bottom: 3vw;
+  }
+  .pl5 {padding-left: 5vw;}
+  .pt15 {padding-top: 15vw;}
+  .pb5 {padding-bottom: 5vw;}
+  .ml2 {margin-left: 2vw;}
+  .mr2 {margin-right: 2vw;}
+  .mt2 {margin-top: 2vw;}
+  .mb2 {margin-bottom: 2vw;}
+  .mb3 {margin-bottom: 3vw;}
+  .fz40 {font-size: 8.0vw;}
+  .fz36 {font-size: 7.2vw;}
+  .fz32 {font-size: 6.4vw;}
+  .fz28 {font-size: 5.6vw;}
+  .fz24 {font-size: 4.8vw;}
+  .fz20 {font-size: 4.0vw;}
+  .fz18 {font-size: 3.6vw;}
+  .fz16 {font-size: 3.2vw;}
+  .fz14 {font-size: 2.8vw;}
+  .fz12 {font-size: 2.4vw;}
+}

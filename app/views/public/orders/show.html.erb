@@ -1,0 +1,85 @@
+<section class="inner">
+	<h2 class="section-ttl">注文履歴詳細</h2>
+	<table class="order_info mb3 has_border">
+		<caption class="fz18 text-left">注文情報</caption>
+		<thead>
+			<tr>
+				<th></th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>注文日</td>
+				<td><%= @order.created_at_jst.strftime('%Y/%m/%d') %></td>
+			</tr>
+			<tr>
+				<td>配送先</td>
+				<td>
+					〒<%= @order.postal_code %><br>
+					<%= @order.destination %><br>
+					<%= @order.name %>
+				</td>
+			</tr>
+			<tr>
+				<td>支払い方法</td>
+				<td><%= @order.payment_method_i18n %></td>
+			</tr>
+			<tr>
+				<td>ステータス</td>
+				<td><%= @order.status_i18n %></td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="flex">
+		<table class="order_details mr2 has_border">
+			<caption class="fz18 text-left">注文内容</caption>
+			<thead>
+				<tr>
+					<th colspan="2">商品名</th>
+					<th>単価(税込)</th>
+					<th>数量</th>
+					<th>小計</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @order.order_details.includes(:item).each do |order_detail| %>
+					<% item = order_detail.item %>
+					<tr>
+						<td>
+							<%= attachment_image_tag item, :image, format: "jpeg", fallback: "no-image.png", class: "cart_item_image" %>
+						</td>
+						<td><%= link_to item.name, item_path(item) %></td>
+						<td class="text-right"><%= order_detail.price %>円</td>
+						<td class="text-center"><%= order_detail.amount %></td>
+						<td class="text-right"><%= order_detail.subtotal %>円</td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+
+		<table class="confirm_prices has_border">
+			<caption class="fz18 text-left">請求情報</caption>
+			<thead>
+				<tr>
+					<th></th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>送料</td>
+					<td><%= @order.shipping_cost %>円</td>
+				</tr>
+				<tr>
+					<td>商品合計</td>
+					<td><%= @order.order_details.sum(&:subtotal) %>円</td>
+				</tr>
+				<tr>
+					<td>総計</td>
+					<td class="bold"><%= @order.grand_total %>円</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</section>

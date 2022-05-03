@@ -1,0 +1,50 @@
+<section class="inner">
+  <% if flash[:notice] %>
+    <p class="text-active"><%= flash[:notice] %></p>
+  <% end %>
+	<h2 class="section-ttl">マイページ</h2>
+	<h3>
+		登録情報
+		<%= link_to "編集する", edit_information_path, class: "btn btn-success ml2" %>
+		<%= link_to "パスワードを変更する", edit_customer_registration_path, class: "btn btn-success ml2" %>
+	</h3>
+	<table class="customer_info mb3">
+		<thead>
+			<th></th>
+			<th></th>
+			<th></th>
+		</thead>
+		<tbody>
+			<tr>
+				<td>名前</td>
+				<td>(姓) <%= @customer.first_name %></td>
+				<td>(名) <%= @customer.last_name %></td>
+			</tr>
+			<tr>
+				<td>フリガナ</td>
+				<td>(セイ) <%= @customer.first_name_kana %></td>
+				<td>(メイ) <%= @customer.last_name_kana %></td>
+			</tr>
+			<tr>
+				<td>メールアドレス</td>
+				<td colspan="2"><%= @customer.email %></td>
+			</tr>
+			<tr>
+				<td>郵便番号</td>
+				<td colspan="2"><%= @customer.postal_code %></td>
+			</tr>
+			<tr>
+				<td>住所</td>
+				<td colspan="2"><%= @customer.address %></td>
+			</tr>
+			<tr>
+				<td>電話番号</td>
+				<td colspan="2"><%= @customer.telephone_number %></td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="flex">
+		<%= link_to "配送先一覧", addresses_path, class: "btn btn-primary" %>
+		<%= link_to "注文履歴一覧", orders_path, class: "btn btn-primary ml2" %>
+	</div>
+</section>

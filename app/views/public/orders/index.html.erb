@@ -1,0 +1,38 @@
+<section class="inner">
+	<h2 class="section-ttl">注文履歴一覧</h2>
+	<table class="orders has_border">
+		<thead>
+			<tr>
+				<th>注文日</th>
+				<th>配送先</th>
+				<th>注文商品</th>
+				<th>支払金額</th>
+				<th>ステータス</th>
+				<th>注文詳細</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @orders.each do |order| %>
+				<tr>
+					<td><%= order.created_at_jst.strftime('%Y/%m/%d') %></td>
+					<td>
+						〒<%= order.postal_code %><br>
+						<%= order.destination %><br>
+						<%= order.name %>
+					</td>
+					<td>
+						<% order.items.each do |item| %>
+							<p><%= item.name %></p>
+						<% end %>
+					</td>
+					<td><%= order.grand_total %></td>
+					<td class="text-center"><%= order.status_i18n %></td>
+					<td class="text-center">
+						<%= link_to "表示する", order_path(order), class: "btn btn-primary" %>
+					</td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+	<%= paginate @orders %>
+</section>

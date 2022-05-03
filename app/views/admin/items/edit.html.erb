@@ -1,0 +1,4 @@
+<section class="inner">
+	<h2 class="section-ttl"><%= @item.name %>の編集</h2>
+  <%= render 'form', item: @item, url: admin_item_path(@item), submit: '更新' %>
+</section>

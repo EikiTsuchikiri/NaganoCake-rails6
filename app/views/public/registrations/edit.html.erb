@@ -1,0 +1,31 @@
+<section class="inner">
+  <h2 class="section-ttl">パスワード編集</h2>
+
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <%= render "layouts/error_messages", resource: resource %>    
+    <div class="field mb2">
+      <%= f.label :email, "メールアドレス" %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    </div>
+
+    <div class="field mb2">
+      <%= f.label :current_password, "現在のパスワード" %><br />
+      <%= f.password_field :current_password, autocomplete: "current-password" %>
+    </div>
+
+    <div class="field mb2">
+      <%= f.label :password, "新しいパスワード(#{@minimum_password_length}文字以上)" %><br />
+      <%= f.password_field :password, autocomplete: "new-password" %>
+    </div>
+
+    <div class="field mb2">
+      <%= f.label :password_confirmation, "新しいパスワード(確認用)" %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    </div>
+
+
+    <div class="actions">
+      <%= f.submit "パスワード更新", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</section>

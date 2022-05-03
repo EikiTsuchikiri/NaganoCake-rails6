@@ -1,0 +1,16 @@
+<%= form_for(address, html: { class: "address_form" }) do |f| %>
+	<%= render 'layouts/error_messages', resource: address %>
+	<div class="field">
+		<%= f.label :postal_code, "郵便番号(ハイフンなし7桁)" %>
+		<%= f.text_field :postal_code, autocomplete: "postal_code", placeholder: "郵便番号", class: "jpostal_code" %>
+	</div>
+	<div class="field">
+		<%= f.label :destination, "住所(郵便番号から自動入力)" %>
+		<%= f.text_field :destination, autocomplete: "destination", placeholder: "住所", class: "jpostal_address" %>
+	</div>
+	<div class="field">
+		<%= f.label :name, "宛名" %>
+		<%= f.text_field :name, autocomplete: "name", placeholder: "宛名" %>
+		<%= f.submit submit, class: "btn btn-primary" %>
+	</div>
+<% end %>

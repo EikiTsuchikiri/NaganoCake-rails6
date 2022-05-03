@@ -1,0 +1,8 @@
+<section class="inner">
+  <h2 class="section-ttl">管理者トップ</h2>
+  <h1 class="admin_top-txt">
+  	本日の注文件数
+  	<%= link_to @count, admin_orders_path(created_at: 'today'), class: "underline" %>
+  	件
+  </h1>
+</section>

@@ -1,0 +1,57 @@
+<section class="inner">
+	<h2 class="section-ttl">ショッピングカート</h2>
+	<% if @cart_items.first %>
+		<div class="text-right mb2">
+			<%= link_to "カートを空にする", destroy_all_cart_items_path, method: :delete, "data-confirm" => "カートを空にします。よろしいでしょうか？", class: "btn btn-danger" %>
+		</div>
+		<table class="cart_items has_border mb3">
+			<thead>
+				<tr>
+					<th colspan="2">商品名</th>
+					<th>単価(税込)</th>
+					<th>数量</th>
+					<th>小計</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @cart_items.each do |cart_item| %>
+					<% item = cart_item.item %>
+					<tr>
+						<td>
+							<%= image_tag item.get_image, class: "cart_item_image" %>
+						</td>
+						<td><%= link_to item.name, item_path(item) %></td>
+						<td class="text-right"><%= item.with_tax_price %>円</td>
+						<td>
+							<%= form_for [item, cart_item] do |f| %>
+								<%= f.select :amount, [*(1..10)], {include_blank: false}, id: "cart_item_amount_#{cart_item.id}" %>
+								<%= f.submit "変更", class: "btn btn-primary", id: "submit_for_cart_item_#{cart_item.id}" %>
+							<% end %>
+						</td>
+						<td class="text-right"><%= cart_item.subtotal %>円</td>
+						<td class="text-center">
+							<%= link_to "削除", item_cart_item_path(item_id: item.id, id: cart_item.id), method: :delete, "data-confirm" => "#{item.name}をカートから削除します。よろしいでしょうか？", class: "btn btn-danger", id: "destroy_cart_item_#{cart_item.id}" %>
+						</td>
+					</tr>
+				<% end %>
+				<tr>
+					<td></td>
+					<td><%= link_to "買い物を続ける", root_path, class: "btn btn-primary" %></td>
+					<td></td>
+					<td class="text-right">合計金額</td>
+					<td class="text-right bold"><%= @cart_items.sum(&:subtotal) %>円</td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="text-center">
+			<%= link_to "注文情報入力に進む", new_order_path, class: "btn btn-success" %>
+		</div>
+	<% else %>
+		<h3 class="text-center mb3 fz24">カート内に商品がありません。</h3>
+		<div class="text-center">
+			<%= link_to "商品一覧を見る", items_path, class: "btn btn-primary" %>
+		</div>
+	<% end %>
+</section>

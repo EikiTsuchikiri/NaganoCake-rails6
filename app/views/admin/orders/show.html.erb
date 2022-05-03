@@ -1,0 +1,98 @@
+<section class="inner">
+	<h2 class="section-ttl">注文履歴詳細</h2>
+	<table class="order_info mb3 has_border">
+		<caption class="fz18 text-left">注文情報</caption>
+		<thead>
+			<tr>
+				<th></th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>注文日時</td>
+				<td><%= @order.created_at.strftime("%Y/%m/%d %H:%M:%S") %></td>
+			</tr>
+			<tr>
+				<td>購入者</td>
+				<td><%= link_to @customer.full_name, admin_customer_path(@customer), class: "underline" %></td>
+			</tr>
+			<tr>
+				<td>配送先</td>
+				<td>
+					〒<%= @order.postal_code %><br>
+					<%= @order.destination %><br>
+					<%= @order.name %>
+				</td>
+			</tr>
+			<tr>
+				<td>支払い方法</td>
+				<td><%= @order.payment_method_i18n %></td>
+			</tr>
+			<tr>
+				<td>注文ステータス</td>
+				<td>
+					<%= form_for(@order, url: admin_order_path(@order)) do |f| %>
+						<%= f.select :status, Order.statuses.keys.map {|k| [I18n.t("enums.order.status.#{k}"), k]} %>
+						<%= f.submit "更新", class: "btn btn-primary" %>
+					<% end %>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="flex">
+		<table class="admin_order_details mr2 has_border">
+			<caption class="fz18 text-left">注文内容</caption>
+			<thead>
+				<tr>
+					<th>商品名</th>
+					<th>単価(税込)</th>
+					<th>数量</th>
+					<th>小計</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @order_details.each do |order_detail| %>
+					<% item = order_detail.item %>
+					<tr>
+						<td><%= link_to item.name, admin_item_path(item) %></td>
+						<td class="text-center"><%= order_detail.price %>円</td>
+						<td class="text-center"><%= order_detail.amount %></td>
+						<td class="text-center"><%= order_detail.subtotal %>円</td>
+						<td>
+							<%= form_with(model: order_detail, url: admin_order_order_detail_path(order_id: @order.id, id: order_detail.id)) do |f| %>
+								<%= f.select :making_status, OrderDetail.making_statuses.keys.map {|k| [I18n.t("enums.order_detail.making_status.#{k}"), k]} %>
+								<%= f.submit "更新", class: "btn btn-primary" %>
+							<% end %>
+						</td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+
+		<table class="confirm_prices has_border">
+			<caption class="fz18 text-left">請求情報</caption>
+			<thead>
+				<tr>
+					<th></th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>送料</td>
+					<td><%= @order.shipping_cost %>円</td>
+				</tr>
+				<tr>
+					<td>商品合計</td>
+					<td><%= @order_details.sum(&:subtotal) %>円</td>
+				</tr>
+				<tr>
+					<td>総計</td>
+					<td class="bold"><%= @order.grand_total %>円</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</section>

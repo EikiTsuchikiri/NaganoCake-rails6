@@ -1,0 +1,27 @@
+<section class="inner">
+	<h2 class="section-ttl">配送先登録 / 一覧</h2>
+  <%= render 'form', address: @address, submit: '登録' %>
+	<table class="addresses mt2 has_border">
+		<thead>
+			<tr>
+				<th>郵便番号</th>
+				<th>住所</th>
+				<th>宛名</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @addresses.each do |address| %>
+				<tr>
+					<td class="text-center"><%= address.postal_code %></td>
+					<td><%= address.destination %></td>
+					<td><%= address.name %></td>
+					<td class="text-center">
+						<%= link_to "編集", edit_address_path(address), class: "btn btn-success" %>
+						<%= link_to "削除", address_path(address), method: :delete, "data-confirm" => "削除します。本当によろしいですか？", class: "btn btn-danger" %>
+					</td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+</section>

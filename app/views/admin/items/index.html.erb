@@ -1,0 +1,18 @@
+<section class="wrapper flex">
+	<div class="inner">
+		<% if params[:genre_id] %>
+			<h2 class="section-ttl"><%= @genre.name %>の商品一覧 (全<%= @all_items_count %>件)</h2>
+		<% else %>
+			<h2 class="section-ttl">商品一覧 (全<%= @all_items_count %>件)</h2>
+		<% end %>
+		<h3 class="text-right">
+			<%= link_to "+", new_admin_item_path, class: "new_admin_item" %>
+		</h3>
+		<% if @items.first %> <!-- @item.existsと同義、SQL1個分削減(?) -->
+			<%= render 'admin/items/index', items: @items %>
+			<%= paginate @items %>
+		<% else %>
+			<h3>対応する商品はありませんでした。</h3>
+		<% end %>
+	</div>
+</section>

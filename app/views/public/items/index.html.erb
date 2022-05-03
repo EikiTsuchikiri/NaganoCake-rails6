@@ -1,0 +1,37 @@
+<section class="wrapper flex">
+	<div class="sidebar">
+		<h3>ジャンル一覧</h3>
+		<% @genres.each do |genre| %>
+			<%= link_to genre.name, items_path(genre_id: genre.id) %>
+		<% end %>
+	</div>
+	<div class="content">
+		<% if params[:genre_id] %>
+			<h2 class="section-ttl"><%= @genre.name %>の商品一覧 (全<%= @all_items_count %>件)</h2>
+		<% else %>
+			<h2 class="section-ttl">商品一覧 (全<%= @all_items_count %>件)</h2>
+		<% end %>
+		<% if @items.first %> <!-- @item.existsと同義、SQL1個分削減(?) -->
+			<div class="items">
+				<% @items.each do |item| %>
+					<%= link_to item_path(item) do %>
+						<%= image_tag item.get_image, format: "jpeg", fallback: "no-image.png" %>
+						<h5><%= item.genre.name %></h5>
+						<p><%= item.name %></p>
+						<p>
+							<%= item.with_tax_price %>円 
+							<% if item.is_active? %>
+								<span class="text-active">販売中</span>
+							<% else %>
+								<span class="text-invalid">販売停止中</span>
+							<% end %>
+						</p>
+					<% end %>
+				<% end %>
+			</div>
+			<%= paginate @items %>
+		<% else %>
+			<h3>対応する商品はありませんでした。</h3>
+		<% end %>
+	</div>
+</section>

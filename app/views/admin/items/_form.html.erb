@@ -1,0 +1,51 @@
+<%= form_for(item, url: url) do |f| %>
+	<%= render 'layouts/error_messages', resource: item %>
+	<div class="flex">
+		<div>
+			<%= f.label :image, "画像" %>
+			<div class="image_field">
+				<%= image_tag (item.image.attached? ? item.image : 'no-image.png'), id: "img_prev", class: "admin_item_image" %>
+				<span class="btn btn-file btn-info"><%= f.file_field :image,  accept:'image/*' %>画像選択</span>
+				<p>選択するとプレビューされます。<br>画像未選択のままだと、<br>「画像準備中」になります。</p>
+			</div>
+		</div>
+		<table class="admin_item_info item_form">
+			<thead>
+				<tr>
+					<th></th>	
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><%= f.label :name, "商品名" %></td>
+					<td><%= f.text_field :name %></td>
+				</tr>
+				<tr>
+					<td><%= f.label :introduction, "商品説明" %></td>
+					<td><%= f.text_area :introduction, rows: 3 %></td>
+				</tr>
+				<tr>
+					<td><%= f.label :genre_id, "ジャンル" %></td>
+					<td class="select_field"><%= f.collection_select :genre_id, Genre.all, :id, :name %></td>
+				</tr>
+				<tr>
+					<td><%= f.label :price, "税抜価格" %></td>
+					<td><%= f.number_field :price %> 円</td>
+				</tr>
+				<tr>
+					<td><%= f.label :sales_status, "販売ステータス" %></td>
+					<td class="select_field">
+						<%= f.radio_button :is_active, true %>
+						<%= f.label :is_active, "販売中", class: "text-active" %>
+						<%= f.radio_button :is_active, false %>
+						<%= f.label :is_active, "販売停止中", class: "text-invalid" %>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="flex align-center pl5">
+			<%= f.submit submit, class: "btn btn-primary" %>
+		</div>
+	</div>
+<% end %>

@@ -1,0 +1,10 @@
+<%= form_for(genre, url: url) do |f| %>
+	<%= render 'layouts/error_messages', resource: genre %>
+	<%= f.label :name, "ジャンル名:" %>
+	<%= f.text_field :name %>
+	<%= f.radio_button :is_active, true %>
+	<%= f.label :is_active, "有効", class: "text-active" %>
+	<%= f.radio_button :is_active, false %>
+	<%= f.label :is_active, "無効", class: "text-invalid" %>
+	<%= f.submit submit, class: "btn btn-primary ml2" %>
+<% end %>

@@ -1,0 +1,654 @@
+/*
+* This is a manifest file that'll be compiled into application.css, which will include all the files
+* listed below.
+*
+* Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+* vendor/assets/stylesheets directory can be referenced here using a relative path.
+*
+* You're free to add application-wide styles to this file and they'll appear at the bottom of the
+* compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+* files in this directory. Styles in this file should be added after the last require_* statement.
+* It is generally better to create a new file per style scope.
+*
+*= require_tree .
+*= require_self
+*/
+#error_explanation {
+  color: red;
+  padding-bottom: 20px;
+  h2 {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  ul {
+    padding-left: 50px;
+    list-style: circle;
+  }
+}
+.field_with_errors {
+  display: inline-block;
+  input,
+  textarea {
+    border: 1px solid red;
+  }
+}
+.text-invalid {
+  color: #bbb;
+}
+.text-active {
+  font-weight: bold;
+  color: #0a0;
+}
+h3 {
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: 500;
+}
+input,
+textarea,
+select {
+  padding: 8px;
+}
+.jpostal_address {
+  width: 480px;
+}
+header {
+  width: 100vw;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  background-color: #faa;
+  * {
+    position: relative;
+    z-index: 100;
+  }
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    width: 960px;
+    margin: 0 auto;
+    .logo {
+      padding: 10px 20px;
+      font-family: "Century";
+      font-size: 20px;
+      text-decoration: none;
+    }
+    ul {
+      justify-content: flex-end;
+      p {
+        padding: 10px 20px 10px 10px;
+      }
+      li {
+        list-style: none;
+        a {
+          display: block;
+          min-width: 110px;
+          padding: 10px;
+          text-align: center;
+          text-decoration: none;
+          color: #333;
+        }
+      }
+      li:hover {
+        cursor: pointer;
+        background-color: #fcc;
+        a {
+          color: #fff;
+        }
+      }
+    }
+  }
+}
+.admin_header {
+  background-color: #aaf;
+  .header-content {
+    ul {
+      li:hover {
+        cursor: pointer;
+        background-color: #ccf;
+      }
+    }
+    form {
+      width: 510px;
+      position: absolute;
+      top: 43px;
+      right: 0;
+      display: flex;
+      justify-content: space-between;
+      input[name="search[content]"] {
+        width: 280px;
+      }
+    }
+  }
+}
+main {
+  padding: 100px 0;
+}
+footer {
+  padding: 15px 0;
+  font-size: 14px;
+  text-align: center;
+  background-color: #ccc;
+}
+th {
+  border-style: solid;
+  border-color: #aaa;
+  background-color: #ddd;
+}
+td {
+  padding: 10px;
+  border-style: solid;
+  border-color: #aaa;
+}
+table.has_border {
+  width: 100%;
+  thead {
+    th {
+      border-width: 1px 1px 0;
+    }
+  }
+  tbody {
+    tr {
+      td {
+        vertical-align: middle;
+        border-width: 1px 1px 0;
+      }
+    }
+    tr:last-child {
+      td {
+        border-width: 1px;
+      }
+    }
+  }
+}
+table.customer_info {
+  width: 100%;
+  thead {
+    th:first-child {
+      width: 30%;
+    }
+    th:last-child {
+      width: 35%;
+    }
+  }
+}
+table.customer_info.customer_form {
+  tbody {
+    tr:nth-child(n+3) {
+      td:nth-child(2) {
+        padding-left: 55px;
+      }
+    }
+  }
+}
+label.customer_name {
+  display: inline-block;
+  padding-right: 14px;
+}
+.field_for_address input {
+  width: 460px;
+}
+table.admin_customer_index {
+  thead {
+    tr {
+      th {
+        width: 280px;
+      }
+      th:first-child {
+        width: 60px;
+      }
+      th:nth-child(n+4) {
+        width: 110px;
+      }
+    }
+  }
+  tbody {
+    tr {
+      td {
+        text-align: center;
+      }
+    }
+  }
+}
+
+.image_field {
+  width: 220px;
+  text-align: center;
+  p {
+    margin-top: 10px;
+    text-align: left;
+  }
+}
+.admin_item_image {
+  width: 220px;
+  height: 150px;
+
+  object-fit: cover;
+}
+.item_image {
+  display: block;
+  width: 360px;
+  height: 240px;
+
+  object-fit: cover;
+}
+.btn-file {
+  overflow: hidden;
+  position: relative;
+  input[type=file] {
+    display: block;
+    min-width: 100%;
+    min-height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 100px;
+    text-align: right;
+    cursor: inherit;
+    background: red;
+    opacity: 0;
+
+    filter: alpha(opacity=0);
+  }
+}
+input[readonly] {
+  cursor: text !important;
+  background-color: white !important;
+}
+table.admin_item_info {
+  width: 400px;
+  margin-left: 20px;
+  thead {
+    tr {
+      th:first-child {
+        width: 35%;
+      }
+      th:last-child {
+        width: 65%;
+      }
+    }
+  }
+}
+table.admin_item_info.item_form {
+  tbody {
+    tr {
+      td {
+        vertical-align: top;
+      }
+      input,
+      textarea,
+      select {
+        width: 220px;
+      }
+      input[name="item[is_active]"] {
+        width: auto;
+      }
+    }
+  }
+}
+table.genre_info {
+  width: 400px;
+  thead {
+    tr {
+      th {
+        width: 100px;
+      }
+      th:first-child {
+        width: 200px;
+      }
+    }
+  }
+  tbody {
+    tr {
+      td:nth-child(2) {
+        text-align: center;
+      }
+    }
+  }
+}
+table.cart_items {
+  tbody {
+    tr {
+      td:first-child {
+        width: 150px;
+        text-align: center;
+        border-right-width: 0;
+      }
+      td:nth-child(2) {
+        width: 250px;
+        word-break: break-word;
+        border-left-width: 0;
+      }
+    }
+    tr:last-child {
+      td {
+        padding-top: 20px;
+        border-width: 1px 0 0;
+      }
+    }
+  }
+}
+.item_info {
+  width: 420px;
+  padding-left: 40px;
+  h4 {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+  p {
+    margin-bottom: 15px;
+  }
+}
+.cart_item_image {
+  width: 100px;
+  height: 75px;
+  object-fit: cover;
+}
+select[name="cart_item[amount]"] {
+  width: 70px;
+}
+.sidebar {
+  width: 160px;
+  height: max-content;
+  margin: 100px 20px 0 0;
+  padding: 10px 0 0;
+  text-align: center;
+  border: 4px double #fee;
+  h3 {
+    margin-bottom: 0;
+    border-bottom: 4px double #fee;
+  }
+  a {
+    display: block;
+    // width: 158px;
+    padding: 10px 0;
+    text-decoration: none;
+    color: #333;
+  }
+  a:hover {
+    background-color: #fcc;
+    color: #fff;
+  }
+}
+.content {
+  width: 780px;
+}
+.mv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 600px;
+  height: 400px;
+  margin: 50px auto 20px;
+  background: no-repeat image-url("top-mv.jpg") center/cover;
+  p {
+    width: 500px;
+    padding: 50px;
+    font-size: 16px;
+    text-align: center;
+    background-color: rgba(255,255,255,0.8);
+  }
+}
+.items {
+  display: flex;
+  flex-wrap: wrap;
+  width: 780px;
+  a {
+    display: block;
+    width: 180px;
+    margin: 0 20px 20px 0;
+    padding: 10px;
+    position: relative;
+    background-color: #fee;
+    img {
+      width: 160px;
+      height: 120px;
+
+      object-fit: cover;
+    }
+    h5 {
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: #fda;
+    }
+  }
+  a:hover {
+    background-color: #fcc;
+  }
+  a:nth-child(4n) {
+    margin: 0 0 20px;
+  }
+}
+form[action="/orders/confirm"] {
+  .field.select_address_0 {
+    p {
+      padding-left: 30px;
+    }
+  }
+  .field.select_address_1 {
+    label {
+      margin-right: 47px;
+    }
+    select[disabled],
+    select[disabled="disabled"] {
+      background-color: #ebebe4;
+      color: #aaa;
+    }
+  }
+  .field.select_address_2 {
+    .field {
+      display: flex;
+      margin-bottom: 10px;
+      label {
+        display: block;
+        width: 196px;
+        margin-right: 20px;
+        line-height: 35px;
+        text-align: right;
+      }
+    }
+  }
+}
+table.confirm_cart_items,
+table.order_details {
+  width: 620px;
+  tbody {
+    tr {
+      td {
+        a {
+          text-decoration: underline;
+        }
+      }
+      td:first-child {
+        width: 150px;
+        text-align: center;
+        border-right-width: 0;
+      }
+      td:nth-child(2) {
+        width: 250px;
+        word-break: break-word;
+        border-left-width: 0;
+      }
+      td:nth-child(n+3) {
+        text-align: center;
+      }
+    }
+  }
+}
+table.confirm_prices {
+  width: 200px;
+  thead {
+    tr {
+      th {
+        width: 100px;
+        border-width: 0;
+      }
+    }
+  }
+  tbody {
+    tr {
+      td:first-child {
+        background-color: #ddd;
+      }
+    }
+  }
+}
+table.order_info {
+  width: 620px;
+  thead {
+    tr {
+      th {
+        border-width: 0;
+      }
+      th:first-child {
+        width: 150px;
+      }
+    }
+  }
+  tbody {
+    tr {
+      td:first-child {
+        background-color: #ddd;
+      }
+    }
+  }
+}
+form[action="/orders"],
+.address_form {
+  .field {
+    display: flex;
+    margin-bottom: 10px;
+    label {
+      display: block;
+      width: 100px;
+      margin-right: 20px;
+      font-size: 16px;
+      text-align: right;
+    }
+  }
+}
+.address_form {
+  .field {
+    label {
+      width: 250px;
+      line-height: 35px;
+    }
+  }
+  .btn {
+    margin-left: 100px;
+  }
+}
+#thanks {
+  padding-top: 100px;
+}
+table.addresses {
+  thead {
+    tr {		
+      th:first-child {
+        width: 100px;
+      }
+      th:nth-child(2) {
+        width: 350px;
+      }
+      th:last-child {
+        width: 150px;
+      }
+    }
+  }
+  tbody {
+    tr {
+      td {
+        word-break: break-word;
+      }
+    }
+  }
+}
+table.orders {
+  thead {	
+    tr {
+      th {
+        width: 100px;
+      }
+      th:nth-child(2),
+      th:nth-child(3) {
+        width: 220px;
+      }
+    }
+  }
+  tbody {
+    tr {
+      td {
+        p {
+          word-break: break-word;
+        }
+      }
+    }
+  }
+}
+.admin_top-txt {
+  padding-top: 30px;
+  font-size: 30px;
+  a {
+    font-weight: bold;
+  }
+}
+.new_admin_item {
+  display: inline-block;
+  margin-right: 30px;
+  background-color: #fff;
+  border: 1px solid #888;
+  color: #888;
+  border-radius: 100%;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  &:hover {
+    background-color: #ddd;
+  }
+}
+table.admin_items {
+  thead {
+    tr {
+      th:first-child {
+        width: 60px;
+      }
+    }
+  }
+}
+table.admin_orders {
+  thead {
+    tr {
+      th {
+        width: 180px;
+      }
+      th:nth-child(2) {
+        width: 240px;
+      }
+      th:nth-child(3) {
+        width: 100px;
+      }
+      th:last-child {
+        width: 140px;
+      }
+    }
+  }
+}
+table.admin_order_details {
+  width: 620px;
+  thead {
+    tr {
+      th:first-child {
+        width: 150px;
+      }
+      th:nth-child(2n) {
+        width: 120px;
+      }
+      th:nth-child(3) {
+        width: 50px;
+      }
+    }
+  }
+}
